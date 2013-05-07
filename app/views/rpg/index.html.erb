@@ -109,27 +109,27 @@
     <div class="row-fluid">
       <div class="span6 well">
         <h3>{{ firstFighter.name }}</h3>
-        <p><i class="icon-heart"></i> <span id="p2hp">{{ firstFighter.hp }}</span> / {{ firstFighter.hp }}</p>
+        <p><i class="icon-heart"></i> <span id="p2hp">{{ firstFighter.currenthp }}</span> / {{ firstFighter.hp }}</p>
         <p><i class="icon-text-height"></i> {{ firstFighter.tallness }}</p>
         <p><i class="icon-magic"></i> {{ firstFighter.l337n355 }}</p>
         <p><i class="icon-hand-right"></i> {{ firstFighter.swag }}</p>
         <p><i class="icon-coffee"></i> {{ firstFighter.caffeination }}</p>
-        <a href="#" class="btn btn-block btn-inverse" ng-repeat="move in moves">{{ move.name }}</a>
+        <button class="btn btn-block btn-inverse" ng-disabled="is1Turn()" ng-repeat="move in firstFighter.moves" ng-click="executeMove(move.func, firstFighter, secondFighter)">{{ move.name }}</button>
       </div>
       <div class="span6 well">
         <h3>{{ secondFighter.name }}</h3>
-        <p><i class="icon-heart"></i> <span id="p2hp">{{ secondFighter.hp }}</span> / {{ secondFighter.hp }}</p>
+        <p><i class="icon-heart"></i> <span id="p2hp">{{ secondFighter.currenthp }}</span> / {{ secondFighter.hp }}</p>
         <p><i class="icon-text-height"></i> {{ secondFighter.tallness }}</p>
         <p><i class="icon-magic"></i> {{ secondFighter.l337n355 }}</p>
         <p><i class="icon-hand-right"></i> {{ secondFighter.swag }}</p>
         <p><i class="icon-coffee"></i> {{ secondFighter.caffeination }}</p>
-        <a href="#" class="btn btn-block btn-inverse" ng-repeat="move in moves">{{ move.name }}</a>
+        <button class="btn btn-block btn-inverse" ng-disabled="is2Turn()" ng-repeat="move in secondFighter.moves" ng-click="executeMove(move.func, secondFighter, firstFighter)">{{ move.name }}</button>
       </div>
     </div>
     
     <div class="row-fluid">
       <div id="console" class="span12 well">
-        <h4>GET READY!!!!!1one</h4>
+        <h4>{{ console }}</h4>
       </div>
     </div>
   </div>

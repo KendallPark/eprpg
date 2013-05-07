@@ -4,8 +4,8 @@ app.factory "Programmer", ($resource) ->
   $resource("/programmers/:id", {id: "@id"}, {update: {method: "PUT"}})
 
 @RpgCtrl = ($scope, Programmer) ->
-  $scope.programmers = Programmer.query() 
-  $scope.moves = [
+  $scope.programmers = Programmer.query()
+  $moves = [
     name: "kick"
     func: (p1, p2) ->
       [0, -10, "foo"]
@@ -13,6 +13,11 @@ app.factory "Programmer", ($resource) ->
     name: "punch"
     func: (p1, p2) ->
       [0, -20, "bar"]
+  ,
+    name: "rest"
+    func: (p1, p2) ->
+      [10, 0, "zzzz"]
+  ,
   ]
   
   $scope.addProgrammer = -> 
@@ -21,9 +26,24 @@ app.factory "Programmer", ($resource) ->
     $scope.newProgrammer = {}
     
   $scope.fight = ->
-    setTimeout (->
-      alert "Gene wins!"
-    ), 500
+    $scope.turn = 0
+    $scope.console = "A wild #{$scope.secondFighter.name} has appeared! What will #{$scope.firstFighter.name} do?"
+    angular.forEach $scope.programmers, (prog) ->
+      prog.currenthp = prog.hp
+      prog.moves = $moves.slice(0,3)
+
+  $scope.executeMove = ($move, $attacker, $defender) ->
+    $results = $move($attacker, $defender)
+    $attacker.currenthp += $results[0]
+    $defender.currenthp += $results[1]
+    $scope.console = $results[2]
+    $scope.turn++
+
+  $scope.is1Turn = ->
+    return $scope.turn % 2 == 1
+
+  $scope.is2Turn = ->
+    return $scope.turn % 2 == 0
         
 $ ->
   $('#new-form, #fight').hide()
