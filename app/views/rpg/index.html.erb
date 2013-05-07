@@ -1,0 +1,137 @@
+<div id="page-title" class="page-header">
+  <h1>
+    EP RPG
+    <small><a id="show-new-form" href="#" class='btn btn-small btn-primary'><i class="icon-plus-sign"></i> N00b</a></small>
+  </h1>
+</div>
+
+<div ng-controller="RpgCtrl">
+  <div id="new-form">
+    <h4>N00b Programmer</h4>
+    <form class="form-horizontal" ng-submit="addProgrammer()">
+      <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+          <input type="text" ng-model="newProgrammer.name">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HP</label>
+        <div class="controls">
+          <input type="number" min="0" max="100" ng-model="newProgrammer.hp">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Tallness</label>
+        <div class="controls">
+          <input type="number" min="1" max="10" ng-model="newProgrammer.tallness">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">l337n355</label>
+        <div class="controls">
+          <input type="number" min="1" max="10" ng-model="newProgrammer.l337n355">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Swag</label>
+        <div class="controls">
+          <input type="number" min="1" max="10" ng-model="newProgrammer.swag">
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Caffeination</label>
+        <div class="controls">
+          <input type="number" min="1" max="10" ng-model="newProgrammer.caffeination">
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <input type="submit" class="btn btn-primary hide-new-form" value="Save">
+        <a href="#" class="btn btn-danger hide-new-form">Cancel</a>
+      </div>
+      
+    </form>
+  </div>
+  
+  <div id="bank">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th><i class="icon-heart"></i> HP</th>
+          <th><i class="icon-text-height"></i> Tallness</th>
+          <th><i class="icon-magic"></i> l337n355</th>
+          <th><i class="icon-hand-right"></i> Swag</th>
+          <th><i class="icon-coffee"></i> Caffeination</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="prog in programmers">
+          <td>{{ prog.name }}</td>
+          <td>{{ prog.hp }}</td>
+          <td>{{ prog.tallness }}</td>
+          <td>{{ prog.l337n355 }}</td>
+          <td>{{ prog.swag }}</td>
+          <td>{{ prog.caffeination }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div id="fight-selector">
+      <form class="form-inline">
+        <div class="row">
+          <div class="span4">
+            <select ng-model="firstFighter" required ng-options="prog.name for prog in programmers"></select>
+          </div>
+          <div class="span1" style="font-size: 20px; text-align: center;">vs</div>
+          <div class="span4">
+            <select ng-model="secondFighter" required ng-options="prog.name for prog in programmers"></select>
+          </div>
+          <div class="span3">
+             <button type="submit" ng-click="fight()" id="fight-button" class="btn btn-block btn-danger">FIGHT!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div id="fight">
+    <div class="page-header">
+      <h2>{{ firstFighter.name }} vs. {{ secondFighter.name }}</h1>
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span6 well">
+        <h3>{{ firstFighter.name }}</h3>
+        <p><i class="icon-heart"></i> <span id="p2hp">{{ firstFighter.hp }}</span> / {{ firstFighter.hp }}</p>
+        <p><i class="icon-text-height"></i> {{ firstFighter.tallness }}</p>
+        <p><i class="icon-magic"></i> {{ firstFighter.l337n355 }}</p>
+        <p><i class="icon-hand-right"></i> {{ firstFighter.swag }}</p>
+        <p><i class="icon-coffee"></i> {{ firstFighter.caffeination }}</p>
+        <a href="#" class="btn btn-block btn-inverse" ng-repeat="move in moves">{{ move.name }}</a>
+      </div>
+      <div class="span6 well">
+        <h3>{{ secondFighter.name }}</h3>
+        <p><i class="icon-heart"></i> <span id="p2hp">{{ secondFighter.hp }}</span> / {{ secondFighter.hp }}</p>
+        <p><i class="icon-text-height"></i> {{ secondFighter.tallness }}</p>
+        <p><i class="icon-magic"></i> {{ secondFighter.l337n355 }}</p>
+        <p><i class="icon-hand-right"></i> {{ secondFighter.swag }}</p>
+        <p><i class="icon-coffee"></i> {{ secondFighter.caffeination }}</p>
+        <a href="#" class="btn btn-block btn-inverse" ng-repeat="move in moves">{{ move.name }}</a>
+      </div>
+    </div>
+    
+    <div class="row-fluid">
+      <div id="console" class="span12 well">
+        <h4>GET READY!!!!!1one</h4>
+      </div>
+    </div>
+  </div>
+
+</div>
