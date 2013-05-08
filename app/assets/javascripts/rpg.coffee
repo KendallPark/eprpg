@@ -125,9 +125,9 @@ app.factory "Programmer", ($resource) ->
         damage = 0
       else if crit
         damage *= 2
-        message += " Nobel Prize!!! #{p1.name} obliterated #{damage} of #{p2.name}'s worldview through scientific domination!!!"
+        message += " Nobel Prize!!! #{p1.name} obliterated #{damage} of #{p2.name}'s preconceived notions through scientific domination!!!"
       else
-        message += " #{p1.name} debunked #{damage} of #{p2.name}'s preconceived notions about realtity through scientific experimentation."
+        message += " #{p1.name} debunked #{damage} of #{p2.name}'s misconceptions about realtity through scientific experimentation."
       [0, -damage, message]
   ,
   ]
