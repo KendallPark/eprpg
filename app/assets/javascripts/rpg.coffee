@@ -188,7 +188,7 @@ app.factory "Programmer", ($resource) ->
       $scope.gameover = true
       setTimeout (->
         confirm "#{$attacker.name} wins!"
-        window.location.reload()
+        window.location.reload(true)
       ), 500
 
     $scope.turn++
