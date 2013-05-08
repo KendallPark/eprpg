@@ -108,22 +108,48 @@
     
     <div class="row-fluid">
       <div class="span6 well">
-        <h3>{{ firstFighter.name }}</h3>
-        <p><i class="icon-heart"></i> <span id="p2hp">{{ firstFighter.currenthp }}</span> / {{ firstFighter.hp }}</p>
-        <p><i class="icon-text-height"></i> {{ firstFighter.tallness }}</p>
-        <p><i class="icon-magic"></i> {{ firstFighter.l337n355 }}</p>
-        <p><i class="icon-hand-right"></i> {{ firstFighter.swag }}</p>
-        <p><i class="icon-coffee"></i> {{ firstFighter.caffeination }}</p>
+        <div class="row-fluid">
+          <div class="span3">
+          <h3>{{ firstFighter.name }}</h3>
+          <table class="table">
+            <tr>
+              <th colspan="2"><i class="icon-heart"></i> <span id="p2hp">{{ firstFighter.currenthp }}</span> / {{ firstFighter.hp }}</th>
+            </tr>
+            <tr>
+              <td><i class="icon-text-height"></i> {{ firstFighter.tallness }}</td>
+            <td><i class="icon-magic"></i> {{ firstFighter.l337n355 }}</td>
+            </tr>
+            <tr>
+              <td><i class="icon-hand-right"></i> {{ firstFighter.swag }}</td>
+              <td><i class="icon-coffee right"></i> {{ firstFighter.caffeination }}</td>
+            </tr>
+          </table>
+          </div>
+        </div>
         <button class="btn btn-block btn-inverse" ng-disabled="is1Turn()" ng-repeat="move in firstFighter.moves" ng-click="executeMove(move.func, firstFighter, secondFighter)">{{ move.name }}</button>
+        <button class="btn btn-block btn-danger" ng-disabled="is1Turn()" ng-repeat="move in firstFighter.specialmoves" ng-click="executeMove(move.func, firstFighter, secondFighter)">{{ move.name }}</button>
       </div>
       <div class="span6 well">
-        <h3>{{ secondFighter.name }}</h3>
-        <p><i class="icon-heart"></i> <span id="p2hp">{{ secondFighter.currenthp }}</span> / {{ secondFighter.hp }}</p>
-        <p><i class="icon-text-height"></i> {{ secondFighter.tallness }}</p>
-        <p><i class="icon-magic"></i> {{ secondFighter.l337n355 }}</p>
-        <p><i class="icon-hand-right"></i> {{ secondFighter.swag }}</p>
-        <p><i class="icon-coffee"></i> {{ secondFighter.caffeination }}</p>
+        <div class="row-fluid">
+          <div class="span3">
+          <h3>{{ secondFighter.name }}</h3>
+          <table class="table">
+            <tr>
+              <th colspan="2"><i class="icon-heart"></i> <span id="p2hp">{{ secondFighter.currenthp }}</span> / {{ secondFighter.hp }}</th>
+            </tr>
+            <tr>
+              <td><i class="icon-text-height"></i> {{ secondFighter.tallness }}</td>
+            <td><i class="icon-magic"></i> {{ secondFighter.l337n355 }}</td>
+            </tr>
+            <tr>
+              <td><i class="icon-hand-right"></i> {{ secondFighter.swag }}</td>
+              <td><i class="icon-coffee right"></i> {{ secondFighter.caffeination }}</td>
+            </tr>
+          </table>
+          </div>
+        </div>
         <button class="btn btn-block btn-inverse" ng-disabled="is2Turn()" ng-repeat="move in secondFighter.moves" ng-click="executeMove(move.func, secondFighter, firstFighter)">{{ move.name }}</button>
+        <button class="btn btn-block btn-danger" ng-disabled="is2Turn()" ng-repeat="move in secondFighter.specialmoves" ng-click="executeMove(move.func, secondFighter, firstFighter)">{{ move.name }}</button>
       </div>
     </div>
     
